@@ -3,45 +3,79 @@ package org.example;
 import java.util.ArrayList;
 
 class NetflixService {
-    /*
-     *The NetflixService should have an Arraylist of users, tv shows and movies.
-     *The NetflixService should have a User object which represents current user.
-     */
+    User currentUser = new User();
+    ArrayList<User> users = new ArrayList<>();
+    ArrayList<TVShow> tvShows = new ArrayList<>();
+    ArrayList<Movie> movies = new ArrayList<>();
 
     public void addTVShow(TVShow tvShow){
-        // Implement add tv show logic here
+        tvShows.add(tvShow);
     }
 
     public void addMovie(Movie movie){
-        // Implement add movie logic here
+        movies.add(movie);
     }
 
     public void createAccount(String username, String password) {
-        // Implement create account logic here
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        users.add(newUser);
+    }
+
+    public boolean usernameTaken(String username){
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean login(String username, String password) {
-        // Implement login logic here
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                currentUser = user;
+                currentUser.setUsername(username);
+                currentUser.setPassword(password);
+                return true;
+            }
+        }
         return false;
     }
 
     public void logout() {
-        // Implement logout logic here
+
     }
 
     public ArrayList<TVShow> searchByTitle(String title) {
-        // Implement search by title logic here
-        return null;
+        ArrayList<TVShow> searchResult = new ArrayList<>();
+        for (TVShow show : tvShows) {
+            if (show.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                searchResult.add(show);
+            }
+        }
+        return searchResult;
     }
 
     public ArrayList<TVShow> searchByGenre(String genre) {
-        // Implement search by genre logic here
-        return null;
+        ArrayList<TVShow> searchResult = new ArrayList<>();
+        for (TVShow show : tvShows) {
+            if (show.getGenre().toLowerCase().contains(genre.toLowerCase())) {
+                searchResult.add(show);
+            }
+        }
+        return searchResult;
     }
 
     public ArrayList<TVShow> searchByReleaseYear(int year) {
-        // Implement search by release year logic here
-        return null;
+        ArrayList<TVShow> searchResult = new ArrayList<>();
+        for (TVShow show : tvShows) {
+            if (show.getReleaseYear() == year) {
+                searchResult.add(show);
+            }
+        }
+        return searchResult;
     }
 
 
