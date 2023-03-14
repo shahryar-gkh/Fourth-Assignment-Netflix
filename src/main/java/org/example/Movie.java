@@ -4,22 +4,23 @@ import java.util.ArrayList;
 
 class Movie extends TVShow {
 
-    private int lengthInMinutes;
+    private static int lengthInMinutes;
 
-    public int getLengthInMinutes() {
+    public static int getLengthInMinutes() {
         return lengthInMinutes;
     }
 
     public void setLengthInMinutes(int lengthInMinutes) {
-        this.lengthInMinutes = lengthInMinutes;
+        Movie.lengthInMinutes = lengthInMinutes;
     }
+
+    public Movie (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, int lengthInMinutes) {
+        super(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred);
+        setLengthInMinutes(lengthInMinutes);
+    }
+
     @Override
     public String toString() {
         return super.toString();
-    }
-
-    public Movie()
-    {
-        super();
     }
 }

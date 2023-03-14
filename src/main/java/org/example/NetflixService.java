@@ -8,12 +8,22 @@ class NetflixService {
     ArrayList<TVShow> tvShows = new ArrayList<>();
     ArrayList<Movie> movies = new ArrayList<>();
 
-    public void addTVShow(TVShow tvShow){
-        tvShows.add(tvShow);
+    public void setCast(String title, ArrayList<String> cast) {
+        for (TVShow show : tvShows) {
+            if (show.getTitle().equals(title)) {
+                show.setCast(cast);
+            }
+        }
     }
 
-    public void addMovie(Movie movie){
-        movies.add(movie);
+    public void addTVShow(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred){
+        TVShow newShow = new TVShow(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred);
+        tvShows.add(newShow);
+    }
+
+    public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes){
+        Movie newMovie = new Movie(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, lengthInMinutes);
+        movies.add(newMovie);
     }
 
     public void createAccount(String username, String password) {

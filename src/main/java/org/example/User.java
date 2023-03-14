@@ -44,6 +44,12 @@ class User {
         }
         return searchResult;
     }
+    public void watchMovie(Movie movie) {
+        previouslyWatchedMovies.add(movie);
+    }
+    public void watchShow(TVShow show) {
+        previouslyWatchedShows.add(show);
+    }
     public void addToFavorites(TVShow show) {
         favoriteShows.add(show);
     }

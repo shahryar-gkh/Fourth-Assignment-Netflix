@@ -3,14 +3,22 @@ package org.example;
 import java.util.ArrayList;
 
 class TVShow {
-    private String title;
-    private String genre;
-    private int releaseYear;
-    private int numberOfSeasons;
-    private int numberOfEpisodes;
-    private int ratingOutOfOneHundred;
-    private ArrayList<String> cast = new ArrayList<>();
+    protected static String title;
+    protected static String genre;
+    protected static int releaseYear;
+    protected static int numberOfSeasons;
+    protected static int numberOfEpisodes;
+    protected static int ratingOutOfOneHundred;
+    protected static ArrayList<String> cast;
 
+    public TVShow (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred) {
+        TVShow.title = title;
+        TVShow.genre = genre;
+        TVShow.releaseYear = releaseYear;
+        TVShow.numberOfSeasons = numberOfSeasons;
+        TVShow.numberOfEpisodes = numberOfEpisodes;
+        TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
+    }
     //Getters
     public String getTitle() {
         return title;
@@ -36,25 +44,25 @@ class TVShow {
 
     //Setters
     public void setTitle(String title) {
-        this.title = title;
+        TVShow.title = title;
     }
     public void setGenre(String genre) {
-        this.genre = genre;
+        TVShow.genre = genre;
     }
     public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+        TVShow.releaseYear = releaseYear;
     }
     public void setNumberOfSeasons(int numberOfSeasons) {
-        this.numberOfSeasons = numberOfSeasons;
+        TVShow.numberOfSeasons = numberOfSeasons;
     }
     public void setNumberOfEpisodes(int numberOfEpisodes) {
-        this.numberOfEpisodes = numberOfEpisodes;
+        TVShow.numberOfEpisodes = numberOfEpisodes;
     }
     public void setRatingOutOfOneHundred(int ratingOutOfOneHundred) {
-        this.ratingOutOfOneHundred = ratingOutOfOneHundred;
+        TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
     }
     public void setCast(ArrayList<String> cast) {
-        this.cast = cast;
+        TVShow.cast = cast;
     }
 
     @Override
