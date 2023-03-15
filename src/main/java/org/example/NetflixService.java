@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 class NetflixService {
     User currentUser = new User();
-    ArrayList<User> users = new ArrayList<>();
-    ArrayList<TVShow> tvShows = new ArrayList<>();
-    ArrayList<Movie> movies = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<TVShow> tvShows = new ArrayList<>();
+    private ArrayList<Movie> movies = new ArrayList<>();
 
-    public void addToTVShowCast(String title, String castMember) {
+    public void addToTVShowCast(String title, ArrayList<String> castMembers) {
         for (TVShow show : tvShows) {
             if (show.getTitle().equals(title)) {
-                show.setCast(castMember);
+                show.setCast(castMembers);
             }
         }
     }
 
-    public void addToMovieCast(String title, String castMember) {
+    public void addToMovieCast(String title, ArrayList<String> castMembers) {
         for (Movie movie : movies) {
             if (movie.getTitle().equals(title)) {
-                movie.setCast(castMember);
+                movie.setCast(castMembers);
             }
         }
     }
@@ -33,6 +33,15 @@ class NetflixService {
         movies.add(newMovie);
     }
 
+    public void giveListOfShows() {
+        for (TVShow show : tvShows) {
+            System.out.println("\n" + show);
+            for (String castMember : show.getCast()) {
+                System.out.print(castMember + ", ");
+            }
+            System.out.print("...\n");
+        }
+    }
     public void createAccount(String username, String password) {
         User newUser = new User();
         newUser.setUsername(username);

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,65 +10,89 @@ public class Main {
 
         //Adding some tv shows
         actions.addTVShow("Stranger Things", "Science Fiction", 2016, 4, 34, 92);
-        actions.addToTVShowCast("Stranger Things", "Millie Bobby Brown");
-//        actions.addToTVShowCast("Stranger Things", "Finn Wolfhard");
-//        actions.addToTVShowCast("Stranger Things", "David Harbour");
-//        actions.addToTVShowCast("Stranger Things", "Winona Ryder");
+        ArrayList<String> strangerThingsCast = new ArrayList<>();
+        strangerThingsCast.add("Millie Bobby Brown");
+        strangerThingsCast.add("Finn Wolfhard");
+        strangerThingsCast.add("David Harbour");
+        strangerThingsCast.add("Winona Ryder");
+        actions.addToTVShowCast("Stranger Things", strangerThingsCast);
         actions.addTVShow("Wednesday", "Horror", 2022, 1, 8, 71);
-//        actions.addToTVShowCast("Wednesday", "Jenna Ortega");
-//        actions.addToTVShowCast("Wednesday", "Emma Myers");
-//        actions.addToTVShowCast("Wednesday", "Christina Ricci");
+        ArrayList<String> wednesdayCast = new ArrayList<>();
+        wednesdayCast.add("Jenna Ortega");
+        wednesdayCast.add("Emma Myers");
+        wednesdayCast.add("Christina Ricci");
+        actions.addToTVShowCast("Wednesday", wednesdayCast);
         actions.addTVShow("Money Heist", "Crime", 2017, 5, 41, 94);
-//        actions.addToTVShowCast("Money Heist", "Alvaro Morte");
-//        actions.addToTVShowCast("Money Heist", "Ursula Corbero");
-//        actions.addToTVShowCast("Money Heist", "Pedro  Alonso");
-//        actions.addToTVShowCast("Money Heist", "Itziar Ituno");
+        ArrayList<String> moneyHeistCast = new ArrayList<>();
+        moneyHeistCast.add("Alvaro Morte");
+        moneyHeistCast.add("Ursula Corbero");
+        moneyHeistCast.add("Pedro  Alonso");
+        moneyHeistCast.add("Itziar Ituno");
+        actions.addToTVShowCast("Money Heist", moneyHeistCast);
         actions.addTVShow("Dark", "Thriller", 2017, 3, 26, 95);
-//        actions.addToTVShowCast("Dark", "Louis Hoffman");
-//        actions.addToTVShowCast("Dark", "Lisa Vicari");
-//        actions.addToTVShowCast("Dark", "Andreas Pietschmann");
-//        actions.addToTVShowCast("Dark", "Gina Stiebtiz");
+        ArrayList<String> darkCast = new ArrayList<>();
+        darkCast.add("Louis Hoffman");
+        darkCast.add("Lisa Vicari");
+        darkCast.add("Andreas Pietschmann");
+        darkCast.add("Gina Stiebtiz");
+        actions.addToTVShowCast("Dark", darkCast);
         actions.addTVShow("Black  Mirror", "Science Fiction", 2011, 5, 22, 84);
-//        actions.addToTVShowCast("Black Mirror", "Bryce Dallas Howard");
-//        actions.addToTVShowCast("Black Mirror", "Anthony Mackie");
-//        actions.addToTVShowCast("Black Mirror", "Jon Hamm");
-//        actions.addToTVShowCast("Black Mirror", "Hayley Atwell");
-//        actions.addToTVShowCast("Black Mirror", "Michaela Coel");
+        ArrayList<String> blackMirrorCast = new ArrayList<>();
+        blackMirrorCast.add("Bryce Dallas Howard");
+        blackMirrorCast.add("Anthony Mackie");
+        blackMirrorCast.add("Jon Hamm");
+        blackMirrorCast.add("Hayley Atwell");
+        blackMirrorCast.add("Michaela Coel");
+        actions.addToTVShowCast("Black Mirror", blackMirrorCast);
         actions.addTVShow("You", "Thriller", 2018, 4, 40, 92);
-//        actions.addToTVShowCast("You", "Penn Badgley");
-//        actions.addToTVShowCast("You", "Victoria Pedretti");
-//        actions.addToTVShowCast("You", "Tati Gabrielle");
+        ArrayList<String> youCast = new ArrayList<>();
+        youCast.add("Penn Badgley");
+        youCast.add("Victoria Pedretti");
+        youCast.add("Tati Gabrielle");
+        actions.addToTVShowCast("You", youCast);
         actions.addTVShow("Big Mouth", "Comedy", 2017, 6, 61, 99);
-//        actions.addToTVShowCast("Big Mouth", "Nick Kroll");
-//        actions.addToTVShowCast("Big Mouth", "John Mulaney");
-//        actions.addToTVShowCast("Big Mouth", "Jessi Klein");
-//        actions.addToTVShowCast("Big Mouth", "Maya Rudolph");
-//
+        ArrayList<String> bigMouthCast = new ArrayList<>();
+        bigMouthCast.add("Nick Kroll");
+        bigMouthCast.add("John Mulaney");
+        bigMouthCast.add("Jessi Klein");
+        bigMouthCast.add("Maya Rudolph");
+        actions.addToTVShowCast("Big Mouth", bigMouthCast);
+
 //        //Adding some movies
 //        actions.addMovie("Red Notice", "Action", 2021, 1, 1, 36, 118);
-//        actions.addToMovieCast("Red Notice", "Dwayne Johnson");
-//        actions.addToMovieCast("Red Notice", "Ryan Reynolds");
-//        actions.addToMovieCast("Red Notice", "Gal Gadot");
+//        ArrayList<String> redNoticeCast = new ArrayList<>();
+//        redNoticeCast.add("Dwayne Johnson");
+//        redNoticeCast.add("Ryan Reynolds");
+//        redNoticeCast.add("Gal Gadot");
+//        actions.addToMovieCast("Red Notice", redNoticeCast);
 //        actions.addMovie("Bird Box", "Thriller", 2018, 1, 1, 64, 124);
-//        actions.addToMovieCast("Bird Box", "Sandra Bullock");
-//        actions.addToMovieCast("Bird Box", "Sarah Paulson");
-//        actions.addToMovieCast("Bird Box", "Trevante Rhodes");
-//        actions.addToMovieCast("Bird Box", "John Malkovich");
+//        ArrayList<String> birdBoxCast = new ArrayList<>();
+//        birdBoxCast.add("Sandra Bullock");
+//        birdBoxCast.add("Sarah Paulson");
+//        birdBoxCast.add("Trevante Rhodes");
+//        birdBoxCast.add("John Malkovich");
+//        actions.addToMovieCast("Bird Box", birdBoxCast);
 //        actions.addMovie("Don't Look Up", "Comedy", 2021, 1, 1, 56, 145);
-//        actions.addToMovieCast("Don't Look Up", "Leonardo DiCaprio");
-//        actions.addToMovieCast("Don't Look Up", "Jennifer Lawrence");
-//        actions.addToMovieCast("Don't Look Up", "Meryl Streep");
-//        actions.addToMovieCast("Don't Look Up", "Cate Blanchett");
-//        actions.addToMovieCast("Don't Look Up", "Timothee Chalamet");
+//        ArrayList<String> dontLookUpCast = new ArrayList<>();
+//        dontLookUpCast.add("Leonardo DiCaprio");
+//        dontLookUpCast.add("Jennifer Lawrence");
+//        dontLookUpCast.add("Meryl Streep");
+//        dontLookUpCast.add("Cate Blanchett");
+//        dontLookUpCast.add("Timothee Chalamet");
+//        actions.addToMovieCast("Don't Look Up", dontLookUpCast);
 //        actions.addMovie("Glass Onion", "Mystery", 2022, 1, 1, 92, 139);
-//        actions.addToMovieCast("Glass Onion", "Daniel Craig");
-//        actions.addToMovieCast("Glass Onion", "Hugh Grant");
-//        actions.addToMovieCast("Glass Onion", "Madelyn Cline");
-//        actions.addToMovieCast("Glass Onion", "Kate Hudson");
+//        ArrayList<String> glassOnionCast = new ArrayList<>();
+//        glassOnionCast.add("Daniel Craig");
+//        glassOnionCast.add("Hugh Grant");
+//        glassOnionCast.add("Madelyn Cline");
+//        glassOnionCast.add("Kate Hudson");
+//        actions.addToMovieCast("Glass Onion", glassOnionCast);
 //        actions.addMovie("The Irishman", "Drama", 2019, 1, 1, 95, 209);
-//        actions.addToMovieCast("The Irishman", "Robert De Niro");
-//        actions.addToMovieCast("The Irishman", "Al Pacino");
-//        actions.addToMovieCast("The Irishman", "Joe Pesci");
+//        ArrayList<String> theIrishmanCast = new ArrayList<>();
+//        theIrishmanCast.add("Robert De Niro");
+//        theIrishmanCast.add("Al Pacino");
+//        theIrishmanCast.add("Joe Pesci");
+//        actions.addToMovieCast("The Irishman", theIrishmanCast);
 
         runMenu();
     }
@@ -159,11 +184,11 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int userChoice;
         do {
-            System.out.println("\n1. See a list of all available shows\n2. Search among all shows on Netflix\n3. Search among your favorite shows\n4. View your  profile\n(Enter 0 to go back)");
+            System.out.println("\n1. See a list of all available shows\n2. Search among all shows on Netflix\n3. Search among your favorite shows\n4. View your watch history in TV shows\n5. View your  profile\n(Enter 0 to go back)");
             userChoice = input.nextInt();
             switch (userChoice) {
                 case 1:
-                    listOfShows();
+                    actions.giveListOfShows();
                     break;
                 case 2:
                     break;
@@ -175,17 +200,34 @@ public class Main {
         } while (userChoice != 0);
     }
 
-    public static void listOfShows() {
-        for (TVShow show : actions.tvShows) {
-            System.out.println(show);
-            for (String cast : show.getCast()) {
-                System.out.print(cast + "   ");
-            }
-        }
-    }
+//    public static void listOfShows() {
+//        for (TVShow show : actions.tvShows) {
+//            System.out.println("\n" + show);
+//            for (String castMember : show.getCast()) {
+//                System.out.print(castMember + ", ");
+//            }
+//            System.out.print("...\n");
+//        }
+//    }
 
     public static void moviesMenu() {
-        System.out.println("MOVIES!!!!!");
+        Scanner input = new Scanner(System.in);
+        int userChoice;
+        do {
+            System.out.println("\n1. See a list of all available movies\n2. View your watch history in movies\n3. View your  profile\n(Enter 0 to go back)");
+            userChoice = input.nextInt();
+            switch (userChoice) {
+                case 1:
+                    actions.giveListOfShows();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+        } while (userChoice != 0);
     }
 
     public static void managerMenu() {
