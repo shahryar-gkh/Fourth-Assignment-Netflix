@@ -61,12 +61,15 @@ class TVShow {
     public void setRatingOutOfOneHundred(int ratingOutOfOneHundred) {
         TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
     }
-    public void setCast(ArrayList<String> cast) {
-        TVShow.cast = cast;
+    public void setCast(String castMember) {
+        cast.add(castMember);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        if (numberOfSeasons == 1) {
+            return title + "\n" + releaseYear + "   " + genre + "\n" + "1 season    " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes\n";
+        }
+        return title + "\n" + releaseYear + "   " + genre + "\n" + numberOfSeasons + " seasons   " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes\n";
     }
 }

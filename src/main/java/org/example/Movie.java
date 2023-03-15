@@ -21,6 +21,6 @@ class Movie extends TVShow {
 
     @Override
     public String toString() {
-        return super.toString();
+        return title + "\n" + releaseYear + "   " + genre + "\n" + lengthInMinutes + " minutes" + ratingOutOfOneHundred + "% on Rotten Tomatoes\n\n";
     }
 }

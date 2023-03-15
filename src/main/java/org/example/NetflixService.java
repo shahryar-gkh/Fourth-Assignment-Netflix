@@ -8,20 +8,27 @@ class NetflixService {
     ArrayList<TVShow> tvShows = new ArrayList<>();
     ArrayList<Movie> movies = new ArrayList<>();
 
-    public void setCast(String title, ArrayList<String> cast) {
+    public void addToTVShowCast(String title, String castMember) {
         for (TVShow show : tvShows) {
             if (show.getTitle().equals(title)) {
-                show.setCast(cast);
+                show.setCast(castMember);
             }
         }
     }
 
+    public void addToMovieCast(String title, String castMember) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().equals(title)) {
+                movie.setCast(castMember);
+            }
+        }
+    }
     public void addTVShow(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred){
         TVShow newShow = new TVShow(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred);
         tvShows.add(newShow);
     }
 
-    public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes){
+    public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, int lengthInMinutes){
         Movie newMovie = new Movie(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, lengthInMinutes);
         movies.add(newMovie);
     }
@@ -87,7 +94,4 @@ class NetflixService {
         }
         return searchResult;
     }
-
-
 }
-

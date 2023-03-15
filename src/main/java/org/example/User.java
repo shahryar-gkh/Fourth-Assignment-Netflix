@@ -57,11 +57,6 @@ class User {
         System.out.println(favoriteShows);
     }
 
-    /* public ArrayList<TVShow> getRecommendations() {
-        // Implement get recommendations logic here
-        return null;
-    } */
-
     //Getters
     public String getUsername() {
         return username;
