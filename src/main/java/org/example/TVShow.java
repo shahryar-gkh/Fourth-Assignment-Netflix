@@ -11,6 +11,10 @@ class TVShow {
     protected static int ratingOutOfOneHundred;
     protected static ArrayList<String> cast;
 
+    public TVShow () {
+
+    }
+
     public TVShow (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred) {
         TVShow.title = title;
         TVShow.genre = genre;
@@ -68,8 +72,8 @@ class TVShow {
     @Override
     public String toString() {
         if (numberOfSeasons == 1) {
-            return title + "\n" + releaseYear + "   " + genre + "\n" + "1 season    " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes";
+            return "\n" + title + "\n" + releaseYear + "   " + genre + "\n" + "1 season    " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes";
         }
-        return title + "\n" + releaseYear + "   " + genre + "\n" + numberOfSeasons + " seasons   " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes";
+        return "\n" + title + "\n" + releaseYear + "   " + genre + "\n" + numberOfSeasons + " seasons   " + numberOfEpisodes + " episodes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes";
     }
 }

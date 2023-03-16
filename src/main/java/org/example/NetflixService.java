@@ -3,10 +3,14 @@ package org.example;
 import java.util.ArrayList;
 
 class NetflixService {
-    User currentUser = new User();
+    private User currentUser = new User();
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<TVShow> tvShows = new ArrayList<>();
     private ArrayList<Movie> movies = new ArrayList<>();
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 
     public void addToTVShowCast(String title, ArrayList<String> castMembers) {
         for (TVShow show : tvShows) {
@@ -42,6 +46,43 @@ class NetflixService {
             System.out.print("...\n");
         }
     }
+
+    public boolean doesShowExist(String showTitle) {
+        for (TVShow show : tvShows) {
+            if (show.getTitle().toLowerCase().contains(showTitle.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean doesShowExistWithExactName(String showTitle) {
+        for (TVShow show : tvShows) {
+            if (show.getTitle().equalsIgnoreCase(showTitle)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean doesMovieExist(String movieTitle) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().toLowerCase().contains(movieTitle.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean doesMovieExistWithExactName(String movieTitle) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().equalsIgnoreCase(movieTitle)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void createAccount(String username, String password) {
         User newUser = new User();
         newUser.setUsername(username);

@@ -105,7 +105,7 @@ public class Main {
             logInOrSignup = input.nextInt();
             if (logInOrSignup == 1) {
                 login();
-                if (actions.currentUser.getUsername().equals("manager")) {
+                if (actions.getCurrentUser().getUsername().equals("manager")) {
                     managerMenu();
                 }
                 else {
@@ -188,7 +188,7 @@ public class Main {
             userChoice = input.nextInt();
             switch (userChoice) {
                 case 1:
-                    actions.giveListOfShows();
+                    listOfShows();
                     break;
                 case 2:
                     break;
@@ -200,15 +200,45 @@ public class Main {
         } while (userChoice != 0);
     }
 
-//    public static void listOfShows() {
-//        for (TVShow show : actions.tvShows) {
-//            System.out.println("\n" + show);
-//            for (String castMember : show.getCast()) {
-//                System.out.print(castMember + ", ");
-//            }
-//            System.out.print("...\n");
-//        }
-//    }
+    public static void listOfShows() {
+        actions.giveListOfShows();
+        System.out.println("\nEnter the name of the show you want to watch (Enter \"e\" if you want to return to the menu):");
+        Scanner input = new Scanner(System.in);
+        String name;
+        while(true) {
+            name = input.nextLine();
+            if (name.equals("e")) {
+                return;
+            }
+            else if (!actions.doesShowExist(name)) {
+                System.out.println("\nThis show doesn't exist. Make sure you're typing in the full title of the show or at least a part of it.\n(Enter \"e\" if you want to return to the menu):");
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println(actions.searchByTitle(name));
+        if (actions.searchByTitle(name).size() != 1) {
+            do {
+                System.out.println("Please be more specific with the title of the show. Enter the full name (Or enter \"e\" if you want to go back to the menu):");
+                name = input.nextLine();
+                if (name.equalsIgnoreCase("e")) {
+                    return;
+                }
+            } while (actions.searchByTitle(name).size() != 1 && !actions.doesShowExistWithExactName(name));
+        }
+        System.out.println("Is this the show you want to watch?\n1. Yes\n2. No");
+        int watchOrNot = input.nextInt();
+        if (watchOrNot == 1) {
+            TVShow currentShow = actions.searchByTitle(name).get(0);
+            actions.getCurrentUser().watchShow(currentShow);
+            System.out.println("You have just watched " + name + ".\n Would you like to add it to your favorites?\n1. Yes\n2. No");
+            int faveOrNot = input.nextInt();
+            if (faveOrNot == 1) {
+                actions.getCurrentUser().addToFavorites(currentShow);
+            }
+        }
+    }
 
     public static void moviesMenu() {
         Scanner input = new Scanner(System.in);
@@ -218,7 +248,6 @@ public class Main {
             userChoice = input.nextInt();
             switch (userChoice) {
                 case 1:
-                    actions.giveListOfShows();
                     break;
                 case 2:
                     break;
