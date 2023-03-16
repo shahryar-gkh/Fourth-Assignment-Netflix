@@ -14,8 +14,8 @@ class Movie extends TVShow {
         Movie.lengthInMinutes = lengthInMinutes;
     }
 
-    public Movie (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, int lengthInMinutes) {
-        super(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred);
+    public Movie (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes) {
+        super(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast);
         setLengthInMinutes(lengthInMinutes);
     }
 

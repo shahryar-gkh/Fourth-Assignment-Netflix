@@ -12,6 +12,11 @@ class NetflixService {
         return currentUser;
     }
 
+    public void setCurrentUser(String username, String password) {
+        currentUser.setUsername(username);
+        currentUser.setPassword(password);
+    }
+
     public void addToTVShowCast(String title, ArrayList<String> castMembers) {
         for (TVShow show : tvShows) {
             if (show.getTitle().equals(title)) {
@@ -27,13 +32,13 @@ class NetflixService {
             }
         }
     }
-    public void addTVShow(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred){
-        TVShow newShow = new TVShow(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred);
+    public void addTVShow(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast){
+        TVShow newShow = new TVShow(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast);
         tvShows.add(newShow);
     }
 
-    public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, int lengthInMinutes){
-        Movie newMovie = new Movie(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, lengthInMinutes);
+    public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes){
+        Movie newMovie = new Movie(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast, lengthInMinutes);
         movies.add(newMovie);
     }
 
@@ -111,8 +116,17 @@ class NetflixService {
         return false;
     }
 
-    public void logout() {
+    public void changePassword(String username, String newPassword) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                user.setPassword(newPassword);
+                currentUser = user;
+            }
+        }
+    }
 
+    public void logout() {
+        currentUser = null;
     }
 
     public ArrayList<TVShow> searchByTitle(String title) {

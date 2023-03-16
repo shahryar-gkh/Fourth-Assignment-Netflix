@@ -15,13 +15,14 @@ class TVShow {
 
     }
 
-    public TVShow (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred) {
+    public TVShow (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast) {
         TVShow.title = title;
         TVShow.genre = genre;
         TVShow.releaseYear = releaseYear;
         TVShow.numberOfSeasons = numberOfSeasons;
         TVShow.numberOfEpisodes = numberOfEpisodes;
         TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
+        TVShow.cast = cast;
     }
     //Getters
     public String getTitle() {

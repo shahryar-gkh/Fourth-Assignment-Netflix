@@ -9,54 +9,54 @@ public class Main {
         actions.createAccount("manager", "GoodP@ssword1234");
 
         //Adding some tv shows
-        actions.addTVShow("Stranger Things", "Science Fiction", 2016, 4, 34, 92);
         ArrayList<String> strangerThingsCast = new ArrayList<>();
         strangerThingsCast.add("Millie Bobby Brown");
         strangerThingsCast.add("Finn Wolfhard");
         strangerThingsCast.add("David Harbour");
         strangerThingsCast.add("Winona Ryder");
-        actions.addToTVShowCast("Stranger Things", strangerThingsCast);
-        actions.addTVShow("Wednesday", "Horror", 2022, 1, 8, 71);
+        actions.addTVShow("Stranger Things", "Science Fiction", 2016, 4, 34, 92, strangerThingsCast);
+        //actions.addToTVShowCast("Stranger Things", strangerThingsCast);
         ArrayList<String> wednesdayCast = new ArrayList<>();
         wednesdayCast.add("Jenna Ortega");
         wednesdayCast.add("Emma Myers");
         wednesdayCast.add("Christina Ricci");
-        actions.addToTVShowCast("Wednesday", wednesdayCast);
-        actions.addTVShow("Money Heist", "Crime", 2017, 5, 41, 94);
+        actions.addTVShow("Wednesday", "Horror", 2022, 1, 8, 71, wednesdayCast);
+        //actions.addToTVShowCast("Wednesday", wednesdayCast);
         ArrayList<String> moneyHeistCast = new ArrayList<>();
         moneyHeistCast.add("Alvaro Morte");
         moneyHeistCast.add("Ursula Corbero");
         moneyHeistCast.add("Pedro  Alonso");
         moneyHeistCast.add("Itziar Ituno");
-        actions.addToTVShowCast("Money Heist", moneyHeistCast);
-        actions.addTVShow("Dark", "Thriller", 2017, 3, 26, 95);
+        actions.addTVShow("Money Heist", "Crime", 2017, 5, 41, 94, moneyHeistCast);
+        //actions.addToTVShowCast("Money Heist", moneyHeistCast);
         ArrayList<String> darkCast = new ArrayList<>();
         darkCast.add("Louis Hoffman");
         darkCast.add("Lisa Vicari");
         darkCast.add("Andreas Pietschmann");
         darkCast.add("Gina Stiebtiz");
-        actions.addToTVShowCast("Dark", darkCast);
-        actions.addTVShow("Black  Mirror", "Science Fiction", 2011, 5, 22, 84);
+        actions.addTVShow("Dark", "Thriller", 2017, 3, 26, 95, darkCast);
+        //actions.addToTVShowCast("Dark", darkCast);
         ArrayList<String> blackMirrorCast = new ArrayList<>();
         blackMirrorCast.add("Bryce Dallas Howard");
         blackMirrorCast.add("Anthony Mackie");
         blackMirrorCast.add("Jon Hamm");
         blackMirrorCast.add("Hayley Atwell");
         blackMirrorCast.add("Michaela Coel");
-        actions.addToTVShowCast("Black Mirror", blackMirrorCast);
-        actions.addTVShow("You", "Thriller", 2018, 4, 40, 92);
+        actions.addTVShow("Black  Mirror", "Science Fiction", 2011, 5, 22, 84, blackMirrorCast);
+        //actions.addToTVShowCast("Black Mirror", blackMirrorCast);
         ArrayList<String> youCast = new ArrayList<>();
         youCast.add("Penn Badgley");
         youCast.add("Victoria Pedretti");
         youCast.add("Tati Gabrielle");
-        actions.addToTVShowCast("You", youCast);
-        actions.addTVShow("Big Mouth", "Comedy", 2017, 6, 61, 99);
+        actions.addTVShow("You", "Thriller", 2018, 4, 40, 92, youCast);
+        //actions.addToTVShowCast("You", youCast);
         ArrayList<String> bigMouthCast = new ArrayList<>();
         bigMouthCast.add("Nick Kroll");
         bigMouthCast.add("John Mulaney");
         bigMouthCast.add("Jessi Klein");
         bigMouthCast.add("Maya Rudolph");
-        actions.addToTVShowCast("Big Mouth", bigMouthCast);
+        actions.addTVShow("Big Mouth", "Comedy", 2017, 6, 61, 99, bigMouthCast);
+        //actions.addToTVShowCast("Big Mouth", bigMouthCast);
 
 //        //Adding some movies
 //        actions.addMovie("Red Notice", "Action", 2021, 1, 1, 36, 118);
@@ -146,6 +146,7 @@ public class Main {
                 return;
             }
         }
+        actions.setCurrentUser(username, password);
     }
 
     public static void signup(){
@@ -162,6 +163,7 @@ public class Main {
         System.out.println("Choose a safe password:");
         String password = input.nextLine();
         actions.createAccount(username, password);
+        actions.setCurrentUser(username,password);
     }
 
     public static void mainMenu() {
@@ -232,7 +234,7 @@ public class Main {
         if (watchOrNot == 1) {
             TVShow currentShow = actions.searchByTitle(name).get(0);
             actions.getCurrentUser().watchShow(currentShow);
-            System.out.println("You have just watched " + name + ".\n Would you like to add it to your favorites?\n1. Yes\n2. No");
+            System.out.println("You have just watched " + name + ".\nWould you like to add it to your favorites?\n1. Yes\n2. No");
             int faveOrNot = input.nextInt();
             if (faveOrNot == 1) {
                 actions.getCurrentUser().addToFavorites(currentShow);
