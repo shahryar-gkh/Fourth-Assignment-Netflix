@@ -17,21 +17,6 @@ class NetflixService {
         currentUser.setPassword(password);
     }
 
-    public void addToTVShowCast(String title, ArrayList<String> castMembers) {
-        for (TVShow show : tvShows) {
-            if (show.getTitle().equals(title)) {
-                show.setCast(castMembers);
-            }
-        }
-    }
-
-    public void addToMovieCast(String title, ArrayList<String> castMembers) {
-        for (Movie movie : movies) {
-            if (movie.getTitle().equals(title)) {
-                movie.setCast(castMembers);
-            }
-        }
-    }
     public void addTVShow(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast){
         TVShow newShow = new TVShow(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast);
         tvShows.add(newShow);
