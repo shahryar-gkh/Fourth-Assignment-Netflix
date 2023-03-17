@@ -27,7 +27,7 @@ class NetflixService {
         movies.add(newMovie);
     }
 
-    public void giveListOfShows() {
+    public void printListOfAllShows() {
         for (TVShow show : tvShows) {
             System.out.println("\n" + show);
             for (String castMember : show.getCast()) {
@@ -37,27 +37,39 @@ class NetflixService {
         }
     }
 
-    public boolean doesShowExist(String showTitle) {
-        for (TVShow show : tvShows) {
-            if (show.getTitle().toLowerCase().contains(showTitle.toLowerCase())) {
-                return true;
+    public void printListOfShowsInArraylist(ArrayList<TVShow> listOfShows) {
+        for (TVShow show : listOfShows) {
+            System.out.println("\n" + show);
+            for (String castMember : show.getCast()) {
+                System.out.print(castMember + ", ");
             }
+            System.out.print("...\n");
         }
-        return false;
+    }
+
+    public void printListOfMoviesInArraylist(ArrayList<Movie> listOfMovies) {
+        for (Movie movie : listOfMovies) {
+            System.out.println("\n" + movie);
+            for (String castMember : movie.getCast()) {
+                System.out.print(castMember + ", ");
+            }
+            System.out.print("...\n");
+        }
+    }
+
+    public void printListOfAllMovies() {
+        for (Movie movie : movies) {
+            System.out.println("\n" + movie);
+            for (String castMember : movie.getCast()) {
+                System.out.print(castMember + ", ");
+            }
+            System.out.print("...\n");
+        }
     }
 
     public boolean doesShowExistWithExactName(String showTitle) {
         for (TVShow show : tvShows) {
             if (show.getTitle().equalsIgnoreCase(showTitle)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean doesMovieExist(String movieTitle) {
-        for (Movie movie : movies) {
-            if (movie.getTitle().toLowerCase().contains(movieTitle.toLowerCase())) {
                 return true;
             }
         }
@@ -114,6 +126,14 @@ class NetflixService {
         currentUser = null;
     }
 
+    public void deleteAccount(String username) {
+        for (User user : users) {
+            if (username.equals(user.getUsername())) {
+                users.remove(user);
+            }
+        }
+    }
+
     public ArrayList<TVShow> searchByTitle(String title) {
         ArrayList<TVShow> searchResult = new ArrayList<>();
         for (TVShow show : tvShows) {
@@ -139,6 +159,36 @@ class NetflixService {
         for (TVShow show : tvShows) {
             if (show.getReleaseYear() == year) {
                 searchResult.add(show);
+            }
+        }
+        return searchResult;
+    }
+
+    public ArrayList<Movie> searchByTitleInMovies(String title) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                searchResult.add(movie);
+            }
+        }
+        return searchResult;
+    }
+
+    public ArrayList<Movie> searchByGenreInMovies(String genre) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getGenre().toLowerCase().contains(genre.toLowerCase())) {
+                searchResult.add(movie);
+            }
+        }
+        return searchResult;
+    }
+
+    public ArrayList<Movie> searchByReleaseYearInMovies(int year) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getReleaseYear() == year) {
+                searchResult.add(movie);
             }
         }
         return searchResult;

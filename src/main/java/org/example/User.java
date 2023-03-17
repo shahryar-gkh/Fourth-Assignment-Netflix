@@ -16,6 +16,7 @@ class User {
     private ArrayList<TVShow> previouslyWatchedShows = new ArrayList<>();
     private ArrayList<Movie> previouslyWatchedMovies = new ArrayList<>();
     private ArrayList<TVShow> favoriteShows = new ArrayList<>();
+    private ArrayList<Movie> favoriteMovies = new ArrayList<>();
 
     public ArrayList<TVShow> searchByTitle(String title) {
         ArrayList<TVShow> searchResult = new ArrayList<>();
@@ -44,17 +45,53 @@ class User {
         }
         return searchResult;
     }
-    public void watchMovie(Movie movie) {
-        previouslyWatchedMovies.add(movie);
+
+    public ArrayList<Movie> searchByTitleInMovies(String title) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : previouslyWatchedMovies) {
+            if (movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                searchResult.add(movie);
+            }
+        }
+        return searchResult;
     }
+    public ArrayList<Movie> searchByGenreInMovies(String genre) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : previouslyWatchedMovies) {
+            if (movie.getGenre().toLowerCase().contains(genre.toLowerCase())) {
+                searchResult.add(movie);
+            }
+        }
+        return searchResult;
+    }
+    public ArrayList<Movie> searchByReleaseYearInMovies(int year) {
+        ArrayList<Movie> searchResult = new ArrayList<>();
+        for (Movie movie : previouslyWatchedMovies) {
+            if (movie.getReleaseYear() == year) {
+                searchResult.add(movie);
+            }
+        }
+        return searchResult;
+    }
+
     public void watchShow(TVShow show) {
         previouslyWatchedShows.add(show);
     }
-    public void addToFavorites(TVShow show) {
+    public void addToFavoriteShows(TVShow show) {
         favoriteShows.add(show);
     }
-    public void viewFavorites() {
-        System.out.println(favoriteShows);
+    public ArrayList<TVShow> getFavoriteShows() {
+        return favoriteShows;
+    }
+
+    public void watchMovie(Movie movie) {
+        previouslyWatchedMovies.add(movie);
+    }
+    public void addToFavoriteMovies(Movie movie) {
+        favoriteMovies.add(movie);
+    }
+    public ArrayList<Movie> getFavoriteMovies() {
+        return favoriteMovies;
     }
 
     //Getters
@@ -63,6 +100,13 @@ class User {
     }
     public String getPassword() {
         return password;
+    }
+    public ArrayList<TVShow> getPreviouslyWatchedShows() {
+        return previouslyWatchedShows;
+    }
+
+    public ArrayList<Movie> getPreviouslyWatchedMovies() {
+        return previouslyWatchedMovies;
     }
 
     //Setters

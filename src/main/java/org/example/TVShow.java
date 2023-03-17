@@ -3,26 +3,26 @@ package org.example;
 import java.util.ArrayList;
 
 class TVShow {
-    protected static String title;
-    protected static String genre;
-    protected static int releaseYear;
-    protected static int numberOfSeasons;
-    protected static int numberOfEpisodes;
-    protected static int ratingOutOfOneHundred;
-    protected static ArrayList<String> cast;
+    protected String title;
+    protected String genre;
+    protected int releaseYear;
+    protected int numberOfSeasons;
+    protected int numberOfEpisodes;
+    protected int ratingOutOfOneHundred;
+    protected ArrayList<String> cast;
 
     public TVShow () {
 
     }
 
     public TVShow (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast) {
-        TVShow.title = title;
-        TVShow.genre = genre;
-        TVShow.releaseYear = releaseYear;
-        TVShow.numberOfSeasons = numberOfSeasons;
-        TVShow.numberOfEpisodes = numberOfEpisodes;
-        TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
-        TVShow.cast = cast;
+        this.title = title;
+        this.genre = genre;
+        this.releaseYear = releaseYear;
+        this.numberOfSeasons = numberOfSeasons;
+        this.numberOfEpisodes = numberOfEpisodes;
+        this.ratingOutOfOneHundred = ratingOutOfOneHundred;
+        this.cast = cast;
     }
     //Getters
     public String getTitle() {
@@ -49,25 +49,25 @@ class TVShow {
 
     //Setters
     public void setTitle(String title) {
-        TVShow.title = title;
+        this.title = title;
     }
     public void setGenre(String genre) {
-        TVShow.genre = genre;
+        this.genre = genre;
     }
     public void setReleaseYear(int releaseYear) {
-        TVShow.releaseYear = releaseYear;
+        this.releaseYear = releaseYear;
     }
     public void setNumberOfSeasons(int numberOfSeasons) {
-        TVShow.numberOfSeasons = numberOfSeasons;
+        this.numberOfSeasons = numberOfSeasons;
     }
     public void setNumberOfEpisodes(int numberOfEpisodes) {
-        TVShow.numberOfEpisodes = numberOfEpisodes;
+        this.numberOfEpisodes = numberOfEpisodes;
     }
     public void setRatingOutOfOneHundred(int ratingOutOfOneHundred) {
-        TVShow.ratingOutOfOneHundred = ratingOutOfOneHundred;
+        this.ratingOutOfOneHundred = ratingOutOfOneHundred;
     }
     public void setCast(ArrayList<String> castMembers) {
-        TVShow.cast = castMembers;
+        this.cast = castMembers;
     }
 
     @Override

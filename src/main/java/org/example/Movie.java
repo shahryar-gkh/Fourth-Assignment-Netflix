@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 class Movie extends TVShow {
 
-    private static int lengthInMinutes;
+    private int lengthInMinutes;
 
-    public static int getLengthInMinutes() {
+    public int getLengthInMinutes() {
         return lengthInMinutes;
     }
 
     public void setLengthInMinutes(int lengthInMinutes) {
-        Movie.lengthInMinutes = lengthInMinutes;
+        this.lengthInMinutes = lengthInMinutes;
     }
 
     public Movie (String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes) {
@@ -21,6 +21,6 @@ class Movie extends TVShow {
 
     @Override
     public String toString() {
-        return title + "\n" + releaseYear + "   " + genre + "\n" + lengthInMinutes + " minutes" + ratingOutOfOneHundred + "% on Rotten Tomatoes\n\n";
+        return "\n" + title + "\n" + releaseYear + "   " + genre + "\n" + lengthInMinutes + " minutes\n" + ratingOutOfOneHundred + "% on Rotten Tomatoes";
     }
 }
