@@ -22,9 +22,25 @@ class NetflixService {
         tvShows.add(newShow);
     }
 
+    public void removeTVShow(String title) {
+        for (TVShow show : tvShows) {
+            if (show.getTitle().equals(title)) {
+                tvShows.remove(show);
+            }
+        }
+    }
+
     public void addMovie(String title, String genre, int releaseYear, int numberOfSeasons, int numberOfEpisodes, int ratingOutOfOneHundred, ArrayList<String> cast, int lengthInMinutes){
         Movie newMovie = new Movie(title, genre, releaseYear, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast, lengthInMinutes);
         movies.add(newMovie);
+    }
+
+    public void removeMovie(String title) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().equals(title)) {
+                movies.remove(movie);
+            }
+        }
     }
 
     public void printListOfAllShows() {

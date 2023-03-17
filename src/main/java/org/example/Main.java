@@ -258,6 +258,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteShows(currentShow);
+                        System.out.println("You added \"" + currentShow.getTitle() + "\" to your favorite shows.");
                     }
                 }
             }
@@ -305,6 +306,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteShows(currentShow);
+                        System.out.println("You added \"" + currentShow.getTitle() + "\" to your favorite shows.");
                     }
                 }
             }
@@ -352,6 +354,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteShows(currentShow);
+                        System.out.println("You added \"" + currentShow.getTitle() + "\" to your favorite shows.");
                     }
                 }
             }
@@ -583,6 +586,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteMovies(currentMovie);
+                        System.out.println("You added \"" + currentMovie.getTitle() + "\" to your favorite movies.");
                     }
                 }
             }
@@ -630,6 +634,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteMovies(currentMovie);
+                        System.out.println("You added \"" + currentMovie.getTitle() + "\" to your favorite movies.");
                     }
                 }
             }
@@ -677,6 +682,7 @@ public class Main {
                     int faveOrNot = Integer.parseInt(input.nextLine());
                     if (faveOrNot == 1) {
                         actions.getCurrentUser().addToFavoriteMovies(currentMovie);
+                        System.out.println("You added \"" + currentMovie.getTitle() + "\" to your favorite movies.");
                     }
                 }
             }
@@ -840,10 +846,7 @@ public class Main {
         System.out.println("\n1. Go back to the menu\n2. Change your password\n3. Delete your account");
         Scanner input = new Scanner(System.in);
         int choice = Integer.parseInt(input.nextLine());
-        if (choice == 1) {
-            return;
-        }
-        else if (choice == 2) {
+        if (choice == 2) {
             System.out.println("Please verify your password:");
             String passwordVerify = input.nextLine();
             while (!passwordVerify.equals(actions.getCurrentUser().getPassword())) {
@@ -894,7 +897,7 @@ public class Main {
                         addShow();
                     }
                     else if (adding == 2) {
-                        //addMovie();
+                        addMovie();
                     }
                 } while (adding != 0);
             }
@@ -904,10 +907,10 @@ public class Main {
                     System.out.println("\nWhat are you removing?\n1. TV show\n2. Movie\n(Enter 0 to return)");
                     removing = Integer.parseInt(input.nextLine());
                     if (removing == 1) {
-                        //removeShow();
+                        removeShow();
                     }
                     else if (removing == 2) {
-                        //removeMovie();
+                        removeMovie();
                     }
                 } while (removing != 0);
             }
@@ -915,6 +918,92 @@ public class Main {
     }
 
     public static void addShow() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nEnter the title of the show:");
+        String title = input.nextLine();
+        System.out.println("Enter the genre:");
+        String genre = input.nextLine();
+        System.out.println("Enter the year it was released:");
+        int year = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the number of the seasons:");
+        int numberOfSeasons = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the number of the episodes:");
+        int numberOfEpisodes = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the rating on Rotten Tomatoes:");
+        int ratingOutOfOneHundred = Integer.parseInt(input.nextLine());
+        ArrayList<String> cast = new ArrayList<>();
+        String castMember;
+        do {
+            System.out.println("Add cast (Enter \"e\" to return):");
+            castMember = input.nextLine();
+            cast.add(castMember);
+        } while (!castMember.equalsIgnoreCase("e"));
+        actions.addTVShow(title, genre, year, numberOfSeasons, numberOfEpisodes, ratingOutOfOneHundred, cast);
+        System.out.println("\"" +  title + "\" was added to Netflix successfully.");
+    }
 
+    public static void addMovie() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nEnter the title of the movie:");
+        String title = input.nextLine();
+        System.out.println("Enter the genre:");
+        String genre = input.nextLine();
+        System.out.println("Enter the year it was released:");
+        int year = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the rating on Rotten Tomatoes:");
+        int ratingOutOfOneHundred = Integer.parseInt(input.nextLine());
+        System.out.println("Enter the length of the movie in minutes:");
+        int lengthInMinutes = Integer.parseInt(input.nextLine());
+        ArrayList<String> cast = new ArrayList<>();
+        String castMember;
+        do {
+            System.out.println("Add cast (Enter \"e\" to return):");
+            castMember = input.nextLine();
+            if (!castMember.equalsIgnoreCase("e")) {
+                cast.add(castMember);
+            }
+        } while (!castMember.equalsIgnoreCase("e"));
+        actions.addMovie(title, genre, year, 1, 1, ratingOutOfOneHundred, cast, lengthInMinutes);
+        System.out.println("\"" +  title + "\" was added to Netflix successfully.");
+    }
+
+    public static void removeShow() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the title of the show you want to remove:");
+        String title = input.nextLine();
+        while (!actions.doesShowExistWithExactName(title)) {
+            System.out.println("This show doesn't exist. Make sure you're entering the full name (Enter \"e\" to return):");
+            title = input.nextLine();
+            if (title.equalsIgnoreCase("e")) {
+                return;
+            }
+        }
+        actions.printListOfShowsInArraylist(actions.searchByTitle(title));
+        System.out.println("Are you sure you want to remove this show?\n1. Yes\n2. No");
+        int removeOrNot = Integer.parseInt(input.nextLine());
+        if (removeOrNot == 1) {
+            actions.removeTVShow(title);
+            System.out.println("\"" + title + "\" was removed successfully.");
+        }
+    }
+
+    public static void removeMovie() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the title of the movie you want to remove:");
+        String title = input.nextLine();
+        while (!actions.doesMovieExistWithExactName(title)) {
+            System.out.println("This movie doesn't exist. Make sure you're entering the full name (Enter \"e\" to return):");
+            title = input.nextLine();
+            if (title.equalsIgnoreCase("e")) {
+                return;
+            }
+        }
+        actions.printListOfMoviesInArraylist(actions.searchByTitleInMovies(title));
+        System.out.println("Are you sure you want to remove this show?\n1. Yes\n2. No");
+        int removeOrNot = Integer.parseInt(input.nextLine());
+        if (removeOrNot == 1) {
+            actions.removeMovie(title);
+            System.out.println("\"" + title + "\" was removed successfully.");
+        }
     }
 }
