@@ -3,13 +3,6 @@ package org.example;
 import java.util.ArrayList;
 
 class User {
-
-    /*
-     * The user should contain an ArrayList of favorite shows and watch history.
-     * FUNCTION: the user should have a function to watch a show and add it to watch history.
-     *  *** NOTE: All search functions in user are for searching in favorite shows ***
-     */
-
     private String username;
     private String password;
 
